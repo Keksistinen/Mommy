@@ -20,9 +20,6 @@ require('dotenv').config()
 const { prefix } = require('./config.json');
 const fs = require('fs');
 
-
-
-
 const maintenancemode = false
 
 const client = new Discord.Client({
@@ -51,8 +48,6 @@ for (const folder of commandFolders) {
     for (const file of commandFiles) {
         const command = require(`./commands/${folder}/${file}`)
         client.commands.set(command.name, command)
-
-
     }
 }
 
@@ -130,7 +125,7 @@ client.on("interactionCreate", async (interaction) => {
     else if (interaction.customId.startsWith("ban_")) {
 
         interaction.reply({ephemeral: false, content: 'Käyttäjä heitetty pellolle! C:< Squeak!'})
-        targetUser.ban({reason: 'Bansku vasara on puhunut!'})
+        targetUser.ban({reason: 'Bannittu'})
 
         if (interaction.message.editable) {
             await interaction.message.edit({ components: [] });
@@ -139,9 +134,9 @@ client.on("interactionCreate", async (interaction) => {
 });
 
 client.on("guildMemberAdd", async (member) => {
-    const infoChannel = await client.channels.fetch("1121204042132107304");
-    console.log('Perkele')
-    infoChannel.send('<@&816048632583028766> Tehkää työnne >:c')
+    const infoChannel = await client.channels.fetch("1135611612510818344");
+    console.log(chalk.bold.green('[Mommy] Uusi jäsen hyppäsi mestoille'));
+    infoChannel.send('<@&816048632583028766> Tehkää työnne >:c');
 
     // ...tässä jemmataan käyttäjän ID tuohon napin customId-kenttään
     const row = new MessageActionRow()
@@ -163,7 +158,7 @@ client.on("guildMemberAdd", async (member) => {
     const userSchemaEmbed = new Discord.MessageEmbed()
 
         .setTitle('Uusi jäsen ilmestyi! 🍪')
-        .setDescription(` 👋 <@${member.id}> liittyi keskuuteemme. Anna hänelle rooli c: (tai bännää`)
+        .setDescription(` 👋 <@${member.id}> liittyi keskuuteemme. Anna hänelle rooli c: (tai bännää)`)
         .setAuthor({ name: 'Mommy', iconURL: 'https://cdn.discordapp.com/attachments/815701611070095402/1129741468752416818/db051adc6b1e0ed129ab2fa1ececf049.jpg' })
         .setColor('a16fab')
         .setFooter({ text: 'Lé Toveri Keksistinen - Author of Mommy', iconURL: 'https://cdn.discordapp.com/attachments/815701611070095402/1129741468752416818/db051adc6b1e0ed129ab2fa1ececf049.jpg' })
@@ -224,8 +219,6 @@ client.on('messageCreate', msg => {
         msg.reply("Lahos saatana")
     }
 })
-
-
 
 
 process.on('exit', function () {
