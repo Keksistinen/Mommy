@@ -5,7 +5,7 @@ module.exports = {
     description: 'Maintance mode activation',
     detailedDescription: 'yes',
     execute(message = Discord.Message.prototype, args = []) {
-        message.reply('Aktivoin huoltotilan. Vastaan ainoastaan sinun komentoihisi. ✅')
+        message.reply('Järjestelmä ajettu alas huoltotilaan. Tietokanta aktiivinen ja vastaan ainoastaan sinun komentoihisi.')
         
 
     },
