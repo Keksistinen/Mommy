@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 module.exports = {
     name: 'paljonko kello on',
     description: 'Clock',
-    detailedDescription: 'KELLO SAATANA',
+    detailedDescription: 'KELLO SAATANAa',
     execute(message = Discord.Message.prototype, args = []) {
 
         var currentdate = new Date();
